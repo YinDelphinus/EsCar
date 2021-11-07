@@ -7,7 +7,7 @@ import lombok.Setter;
 import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
-import java.util.List;
+import java.util.Set;
 
 @RequiredArgsConstructor
 @Getter
@@ -39,8 +39,10 @@ public class Company {
     private LocalTime workingHoursTo;
 
     @OneToMany(mappedBy = "companyId")
-    private List<Service> services;
+    @org.hibernate.annotations.ForeignKey(name = "FK_Company_Services")
+    private Set<Service> services;
 
     @OneToMany(mappedBy = "companyId")
-    private List<Facility> facilities;
+    @org.hibernate.annotations.ForeignKey(name = "FK_Company_Facilities")
+    private Set<Facility> facilities;
 }

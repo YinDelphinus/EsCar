@@ -14,19 +14,15 @@ import java.time.LocalDateTime;
 @Table(name = "Client")
 public class Client {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
-    private final Long id;
+    @Column(name  = "phone_number")
+    //+380 xx-xx-xx-xxx
+    private final Integer phoneNumber;
 
     @Column(name = "name", length = 150)
     private String name;
 
     @Column(name = "registration_date", nullable = false, updatable = false)
     private final LocalDateTime registrationDate = LocalDateTime.now();
-
-    @Column(name  = "phone_number", nullable = false, unique = true)
-    //+380 xx-xx-xx-xxx
-    private Integer phoneNumber;
 
     @Column(name = "registered_messangers_mask", nullable = false)
     private Integer registeredMessengersMask = 0;

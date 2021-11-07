@@ -6,7 +6,7 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
-import java.util.List;
+import java.util.Set;
 
 @RequiredArgsConstructor
 @Getter
@@ -34,8 +34,8 @@ public class Price {
     private LocalDateTime endDateTime;
 
     @ManyToMany
-    @JoinTable(name = "services_price",
+    @JoinTable(name = "Services2Prices",
             joinColumns = @JoinColumn(name = "facility_id"),
             inverseJoinColumns = @JoinColumn(name = "service_id"))
-    private List<Service> services;
+    private Set<Service> services;
 }

@@ -6,7 +6,7 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
-import java.util.List;
+import java.util.Set;
 
 @RequiredArgsConstructor
 @Getter
@@ -29,16 +29,18 @@ public class Event {
     private Double price;
 
     @ManyToMany
-    @JoinTable(name = "event_services",
+    @JoinTable(name = "Events2Services",
             joinColumns = @JoinColumn(name = "event_id"),
             inverseJoinColumns = @JoinColumn(name = "service_id"))
-    private List<Service> services;
+    private Set<Service> services;
 
     @ManyToOne
+    @org.hibernate.annotations.ForeignKey(name = "FK_Facility_Events")
     //while client reservation several events could be created
-    // one per each facility needed for list of booked services
+    // one per each facility needed for set of booked services
     private Facility facility;
 
     @ManyToOne
+    @org.hibernate.annotations.ForeignKey(name = "FK_Client_Events")
     private Client client;
 }

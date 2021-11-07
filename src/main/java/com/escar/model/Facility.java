@@ -5,7 +5,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
-import java.util.List;
+import java.util.Set;
 
 @RequiredArgsConstructor
 @Getter
@@ -22,8 +22,8 @@ public class Facility {
     private final Long companyId;
 
     @ManyToMany
-    @JoinTable(name = "facility_services",
+    @JoinTable(name = "Facilities2Services",
             joinColumns = @JoinColumn(name = "facility_id"),
             inverseJoinColumns = @JoinColumn(name = "service_id"))
-    private List<Service> services;
+    private Set<Service> services;
 }
